@@ -25,29 +25,29 @@ if [ -f ".env" ]; then
   echo "Loading environment variables from .env..."
   export $(grep -v '^#' .env | grep -v '^$' | xargs)
   
-  # Set JAVA_HOME from JAVA_8_HOME if defined
-  if [ -n "$JAVA_8_HOME" ]; then
-    export JAVA_HOME="$JAVA_8_HOME"
+  # Set JAVA_HOME from JAVA_PRJ_HOME if defined
+  if [ -n "$JAVA_PRJ_HOME" ]; then
+    export JAVA_HOME="$JAVA_PRJ_HOME"
     echo "✓ JAVA_HOME set to: $JAVA_HOME"
   fi
 fi
 
-# Verify JAVA_8_HOME is defined
-if [ -z "$JAVA_8_HOME" ]; then
+# Verify JAVA_PRJ_HOME is defined
+if [ -z "$JAVA_PRJ_HOME" ]; then
   echo ""
-  echo "❌ ERROR: JAVA_8_HOME is not defined"
+  echo "❌ ERROR: JAVA_PRJ_HOME is not defined"
   echo ""
-  echo "Please configure JAVA_8_HOME in the .env file:"
+  echo "Please configure JAVA_PRJ_HOME in the .env file:"
   echo "  1. Edit .env file: nano .env"
-  echo "  2. Set JAVA_8_HOME=/path/to/your/jdk8"
-  echo "  3. Example: JAVA_8_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
+  echo "  2. Set JAVA_PRJ_HOME=/path/to/your/jdk"
+  echo "  3. Example: JAVA_PRJ_HOME=/usr/lib/jvm/java-21-openjdk-amd64"
   echo ""
   exit 1
 fi
 
 # Verify JAVA_HOME is set
 if [ -z "$JAVA_HOME" ]; then
-  export JAVA_HOME="$JAVA_8_HOME"
+  export JAVA_HOME="$JAVA_PRJ_HOME"
 fi
 # ----------------------------------------------------------------------------
 
