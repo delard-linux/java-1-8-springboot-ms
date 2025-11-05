@@ -1,16 +1,16 @@
 package com.empresa.gestion.dto;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 /**
  * DTO para transferir datos de Sede entre capas
  * 
- * JAVA 8 + SPRING BOOT 2.7:
+ * JAVA 21 + SPRING BOOT 3.3:
  * - Clase con getters/setters
- * - javax.validation.constraints.* (Bean Validation estándar)
+ * - jakarta.validation.constraints.* (Jakarta Bean Validation)
  */
 public class SedeDTO {
 

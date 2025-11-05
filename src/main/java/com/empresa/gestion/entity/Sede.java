@@ -1,14 +1,14 @@
 package com.empresa.gestion.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Objects;
 
 /**
  * Entidad que representa una Sede física de una Empresa
  * 
- * JAVA 8 + SPRING BOOT 2.7:
+ * JAVA 21 + SPRING BOOT 3.3:
  * - Clase tradicional con getters/setters
- * - javax.persistence.* (JPA estándar)
+ * - jakarta.persistence.* (Jakarta EE JPA)
  */
 @Entity
 @Table(name = "sedes")

@@ -12,7 +12,7 @@ import java.util.Optional;
 /**
  * Repositorio JPA para la entidad Empresa
  * 
- * SPRING DATA JPA + JAVA 8:
+ * SPRING DATA JPA + JAVA 21:
  * - Proporciona implementación automática de métodos CRUD
  * - Soporta consultas derivadas de nombres de métodos
  * - Permite consultas personalizadas con @Query

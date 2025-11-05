@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 /**
  * Mapper manual para convertir entre Entity y DTO de Empresa
  * 
- * JAVA 8 + SPRING BOOT 2.7:
- * - Mapper manual usando streams básicos
+ * JAVA 21 + SPRING BOOT 3.3:
+ * - Mapper manual usando streams modernos
  * - Sin librerías adicionales (MapStruct, ModelMapper)
  */
 @Component
@@ -27,9 +27,9 @@ public class EmpresaMapper {
     /**
      * Convierte Entity a DTO
      * 
-     * JAVA 8 vs JAVA 10+:
-     * Java 8:  List<SedeDTO> sedesDTO = entity.getSedes()...
-     * Java 10+: var sedesDTO = entity.getSedes()...
+     * JAVA 21:
+     * Puede usar 'var' para inferencia de tipos o tipos explícitos
+     * var sedesDTO = entity.getSedes()...
      */
     public EmpresaDTO toDTO(Empresa entity) {
         if (entity == null) {

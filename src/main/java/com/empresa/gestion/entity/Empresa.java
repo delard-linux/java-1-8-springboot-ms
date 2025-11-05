@@ -1,6 +1,6 @@
 package com.empresa.gestion.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,10 @@ import java.util.Objects;
 /**
  * Entidad que representa una Empresa
  * 
- * JAVA 8 + SPRING BOOT 2.7:
+ * JAVA 21 + SPRING BOOT 3.3:
  * - Usamos clase tradicional con getters/setters
- * - javax.persistence.* (JPA estándar)
- * - Compatible con Java 8
+ * - jakarta.persistence.* (Jakarta EE JPA)
+ * - Compatible con Java 21
  */
 @Entity
 @Table(name = "empresas")

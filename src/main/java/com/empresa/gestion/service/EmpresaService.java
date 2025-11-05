@@ -20,7 +20,7 @@ import java.util.Optional;
  * - Se comunica con la capa de repositorio (datos)
  * - Es utilizada por la capa de controladores
  * 
- * JAVA 8 + SPRING BOOT 2.7:
+ * JAVA 21 + SPRING BOOT 3.3:
  * - Optional para manejar nulos de forma segura
  * - Transacciones con @Transactional
  */

@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 /**
  * Mapper manual para convertir entre Entity y DTO de Sede
  * 
- * JAVA 8 + SPRING BOOT 2.7:
- * - Sintaxis tradicional de Java 8
+ * JAVA 21 + SPRING BOOT 3.3:
+ * - Sintaxis moderna de Java 21
  */
 @Component
 public class SedeMapper {

@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 
 /**
@@ -22,8 +22,8 @@ import java.util.List;
  * - PUT    /api/sedes/{id}        -> Actualizar existente
  * - DELETE /api/sedes/{id}        -> Eliminar
  * 
- * JAVA 8 + SPRING BOOT 2.7:
- * - javax.validation.* (Bean Validation estándar)
+ * JAVA 21 + SPRING BOOT 3.3:
+ * - jakarta.validation.* (Jakarta Bean Validation)
  */
 @RestController
 @RequestMapping("/api/sedes")

@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 
 /**
@@ -22,9 +22,9 @@ import java.util.List;
  * - PUT    /api/empresas/{id}     -> Actualizar existente
  * - DELETE /api/empresas/{id}     -> Eliminar
  * 
- * JAVA 8 + SPRING BOOT 2.7:
- * - Sintaxis tradicional de Java 8
- * - javax.validation.* (Bean Validation estándar)
+ * JAVA 21 + SPRING BOOT 3.3:
+ * - Sintaxis moderna de Java 21
+ * - jakarta.validation.* (Jakarta Bean Validation)
  */
 @RestController
 @RequestMapping("/api/empresas")
@@ -67,7 +67,7 @@ public class EmpresaController {
      * Crear una nueva empresa
      * POST /api/empresas
      * 
-     * Validación: @Valid con javax.validation
+     * Validación: @Valid con jakarta.validation
      */
     @PostMapping
     public ResponseEntity<EmpresaDTO> crear(@Valid @RequestBody EmpresaDTO empresaDTO) {

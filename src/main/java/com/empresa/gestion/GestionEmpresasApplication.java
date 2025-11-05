@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Clase principal de la aplicación Spring Boot
  * 
  * Esta aplicación demuestra:
- * - Spring Boot 2.7 con Java 8
+ * - Spring Boot 3.3 con Java 21
  * - Arquitectura en capas (Controller -> Service -> Repository)
  * - JPA con H2 (base de datos en memoria)
  * - Separación de DTOs y Entities
