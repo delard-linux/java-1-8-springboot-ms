@@ -24,7 +24,7 @@ proyecto/
 El archivo `.env` contiene la configuración del JDK 8:
 
 ```bash
-JAVA_8_HOME=/opt/java/jdk-8
+JAVA_PRJ_HOME=/opt/java/jdk-8
 ```
 
 ### 🎯 Carga Automática
@@ -33,21 +33,21 @@ El script `mvnw` **carga automáticamente** el archivo `.env` al ejecutarse. No 
 
 Cuando ejecutas `./mvnw`, automáticamente:
 1.✅ Lee el archivo `.env`
-2.✅ Configura `JAVA_HOME=$JAVA_8_HOME` (según la ruta en `.env`)
+2.✅ Configura `JAVA_HOME=$JAVA_PRJ_HOME` (según la ruta en `.env`)
 3.✅ Muestra un mensaje de confirmación
 4.✅ Ejecuta Maven con el Java correcto
 
 ### ⚙️ Configurar tu JDK
 
-**IMPORTANTE**: Edita el archivo `.env` y ajusta la ruta `JAVA_8_HOME` a tu instalación de Java:
+**IMPORTANTE**: Edita el archivo `.env` y ajusta la ruta `JAVA_PRJ_HOME` a tu instalación de Java:
 
 ```bash
 # Editar .env
 nano .env  # o vim .env
 
-# Cambiar JAVA_8_HOME=/opt/java/jdk-8
+# Cambiar JAVA_PRJ_HOME=/opt/java/jdk-8
 # Por tu ruta real, por ejemplo:
-JAVA_8_HOME=/opt/java/jdk-8
+JAVA_PRJ_HOME=/opt/java/jdk-8
 ```
 
 **Para encontrar tu instalación de Java:**
@@ -211,7 +211,7 @@ chmod +x mvnw
 2. **Para CI/CD**: Configura las variables de entorno en tu pipeline
 3. **Para Producción**: Considera usar Docker con Java 8
 4. **Git**: El `maven-wrapper.jar` está incluido en el repositorio (es necesario)
-5. **Configurar JDK**: Edita el archivo `.env` y ajusta `JAVA_8_HOME` a tu instalación
+5. **Configurar JDK**: Edita el archivo `.env` y ajusta `JAVA_PRJ_HOME` a tu instalación
 
 ## 📂 Estructura de Archivos
 
