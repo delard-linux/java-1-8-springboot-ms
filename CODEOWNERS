@@ -1,0 +1,19 @@
+# CODEOWNERS
+# Este archivo define los propietarios del código para revisiones automáticas
+
+# Propietario por defecto de todo el repositorio
+* @delard-linux drd_id@hotmail.com
+
+# Documentación
+*.md @delard-linux drd_id@hotmail.com
+
+# Configuración
+pom.xml @delard-linux drd_id@hotmail.com
+.env @delard-linux drd_id@hotmail.com
+application*.properties @delard-linux drd_id@hotmail.com
+
+# Scripts
+*.sh @delard-linux drd_id@hotmail.com
+
+# Código fuente Java
+*.java @delard-linux drd_id@hotmail.com
