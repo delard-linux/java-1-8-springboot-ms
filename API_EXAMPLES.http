@@ -1,0 +1,340 @@
+### ============================================
+### API REST - Ejemplos de Peticiones HTTP
+### Microservicio Gestión de Empresas
+### ============================================
+### 
+### Instrucciones:
+### 1. Instalar extensión REST Client en VS Code
+### 2. O usar estos ejemplos con Postman/Insomnia/cURL
+### 3. Ejecutar la aplicación: mvn spring-boot:run
+### 4. Puerto por defecto: 8080
+###
+
+### Variables globales
+@baseUrl = http://localhost:8080/api
+@contentType = application/json
+
+### ============================================
+### EMPRESAS - CRUD Básico
+### ============================================
+
+### 1. Listar todas las empresas
+GET {{baseUrl}}/empresas
+
+###
+
+### 2. Obtener empresa por ID
+GET {{baseUrl}}/empresas/1
+
+###
+
+### 3. Crear nueva empresa
+POST {{baseUrl}}/empresas
+Content-Type: {{contentType}}
+
+{
+  "razonSocial": "Innovación Digital S.L.",
+  "cif": "B99887766",
+  "email": "info@innovaciondigital.es",
+  "telefono": "911222333",
+  "sector": "Tecnología",
+  "activo": true,
+  "facturacionAnual": 2000000.00,
+  "numeroEmpleados": 25
+}
+
+###
+
+### 4. Actualizar empresa existente
+PUT {{baseUrl}}/empresas/1
+Content-Type: {{contentType}}
+
+{
+  "razonSocial": "Tech Solutions S.L. (Actualizada)",
+  "cif": "B12345678",
+  "email": "contacto@techsolutions.es",
+  "telefono": "912345678",
+  "sector": "Tecnología",
+  "activo": true,
+  "facturacionAnual": 6000000.00,
+  "numeroEmpleados": 55
+}
+
+###
+
+### 5. Eliminar empresa
+DELETE {{baseUrl}}/empresas/5
+
+###
+
+### ============================================
+### EMPRESAS - Búsquedas y Filtros
+### ============================================
+
+### 6. Listar empresas activas
+GET {{baseUrl}}/empresas/activas
+
+###
+
+### 7. Buscar por CIF
+GET {{baseUrl}}/empresas/cif/B12345678
+
+###
+
+### 8. Buscar por sector
+GET {{baseUrl}}/empresas/sector/Tecnología
+
+###
+
+### 9. Buscar por razón social (texto parcial)
+GET {{baseUrl}}/empresas/buscar?texto=Tech
+
+###
+
+### ============================================
+### EMPRESAS - Operaciones Especiales
+### ============================================
+
+### 10. Desactivar empresa (soft delete)
+PATCH {{baseUrl}}/empresas/4/desactivar
+
+###
+
+### 11. Activar empresa
+PATCH {{baseUrl}}/empresas/5/activar
+
+###
+
+### 12. Contar empresas activas
+GET {{baseUrl}}/empresas/estadisticas/activas
+
+###
+
+### ============================================
+### SEDES - CRUD Básico
+### ============================================
+
+### 13. Listar todas las sedes
+GET {{baseUrl}}/sedes
+
+###
+
+### 14. Obtener sede por ID
+GET {{baseUrl}}/sedes/1
+
+###
+
+### 15. Crear nueva sede
+POST {{baseUrl}}/sedes
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Delegación Málaga",
+  "direccion": "Calle Larios, 10",
+  "ciudad": "Málaga",
+  "provincia": "Málaga",
+  "codigoPostal": "29015",
+  "pais": "España",
+  "telefono": "952123456",
+  "email": "malaga@techsolutions.es",
+  "esPrincipal": false,
+  "capacidadAlmacenamiento": 250.0,
+  "horarioRecepcion": "L-V: 9:00-18:00",
+  "empresaId": 1
+}
+
+###
+
+### 16. Actualizar sede existente
+PUT {{baseUrl}}/sedes/1
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Sede Central Madrid (Actualizada)",
+  "direccion": "Calle Gran Vía, 45",
+  "ciudad": "Madrid",
+  "provincia": "Madrid",
+  "codigoPostal": "28013",
+  "pais": "España",
+  "telefono": "912345678",
+  "email": "madrid@techsolutions.es",
+  "esPrincipal": true,
+  "capacidadAlmacenamiento": 600.0,
+  "horarioRecepcion": "L-V: 8:00-19:00",
+  "empresaId": 1
+}
+
+###
+
+### 17. Eliminar sede
+DELETE {{baseUrl}}/sedes/12
+
+###
+
+### ============================================
+### SEDES - Búsquedas y Filtros
+### ============================================
+
+### 18. Listar sedes de una empresa específica
+GET {{baseUrl}}/sedes/empresa/1
+
+###
+
+### 19. Buscar sedes por ciudad
+GET {{baseUrl}}/sedes/ciudad/Madrid
+
+###
+
+### 20. Buscar sedes por provincia
+GET {{baseUrl}}/sedes/provincia/Barcelona
+
+###
+
+### 21. Obtener sede principal de una empresa
+GET {{baseUrl}}/sedes/empresa/2/principal
+
+###
+
+### 22. Buscar sedes por nombre (texto parcial)
+GET {{baseUrl}}/sedes/buscar?texto=Central
+
+###
+
+### 23. Contar sedes de una empresa
+GET {{baseUrl}}/sedes/empresa/2/count
+
+###
+
+### ============================================
+### EJEMPLOS DE VALIDACIÓN (Errores esperados)
+### ============================================
+
+### 24. Crear empresa sin CIF (Error 400)
+POST {{baseUrl}}/empresas
+Content-Type: {{contentType}}
+
+{
+  "razonSocial": "Empresa sin CIF",
+  "email": "info@empresa.es"
+}
+
+###
+
+### 25. Crear empresa con CIF duplicado (Error 400)
+POST {{baseUrl}}/empresas
+Content-Type: {{contentType}}
+
+{
+  "razonSocial": "Otra Empresa",
+  "cif": "B12345678",
+  "email": "info@otra.es"
+}
+
+###
+
+### 26. Crear sede sin empresa (Error 400)
+POST {{baseUrl}}/sedes
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Sede sin empresa",
+  "direccion": "Calle Test, 1",
+  "ciudad": "Madrid"
+}
+
+###
+
+### 27. Obtener empresa inexistente (Error 404)
+GET {{baseUrl}}/empresas/999
+
+###
+
+### ============================================
+### CONSOLA H2 DATABASE
+### ============================================
+### URL: http://localhost:8080/h2-console
+### JDBC URL: jdbc:h2:mem:empresasdb
+### User: sa
+### Password: (vacío)
+###
+
+### ============================================
+### HEALTH CHECK (Actuator)
+### ============================================
+
+### 28. Health Check
+GET http://localhost:8080/actuator/health
+
+###
+
+### 29. Info
+GET http://localhost:8080/actuator/info
+
+###
+
+### ============================================
+### EJEMPLOS cURL (Linux/Mac/Windows Git Bash)
+### ============================================
+
+# Listar empresas
+# curl http://localhost:8080/api/empresas
+
+# Obtener empresa por ID
+# curl http://localhost:8080/api/empresas/1
+
+# Crear empresa
+# curl -X POST http://localhost:8080/api/empresas \
+#   -H "Content-Type: application/json" \
+#   -d '{"razonSocial":"Nueva Empresa","cif":"B11112222","email":"info@nueva.es","sector":"Servicios","activo":true}'
+
+# Listar sedes de empresa
+# curl http://localhost:8080/api/sedes/empresa/1
+
+###
+
+### ============================================
+### TESTS FUNCIONALES
+### ============================================
+
+### Test 1: Crear empresa, añadir sede, consultar
+POST {{baseUrl}}/empresas
+Content-Type: {{contentType}}
+
+{
+  "razonSocial": "Test Empresa S.L.",
+  "cif": "B88889999",
+  "email": "test@empresa.es",
+  "telefono": "900000000",
+  "sector": "Testing",
+  "activo": true
+}
+
+### Anotar el ID devuelto y usarlo para crear sede:
+### (Reemplazar {empresaId} con el ID real)
+
+###
+
+POST {{baseUrl}}/sedes
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Sede Test",
+  "direccion": "Calle Test, 123",
+  "ciudad": "Madrid",
+  "provincia": "Madrid",
+  "codigoPostal": "28001",
+  "pais": "España",
+  "esPrincipal": true,
+  "empresaId": 6
+}
+
+###
+
+GET {{baseUrl}}/sedes/empresa/6
+
+###
+
+### ============================================
+### FIN DE EJEMPLOS
+### ============================================
+
